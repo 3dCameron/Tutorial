@@ -1,0 +1,53 @@
+{
+    "autograding" : {
+        "submission_to_runner" : [ "*.cpp", "*.c", "*.hpp", "*.h", "*.c", "*.hpp" ]
+    },	
+
+    "resource_limits" : {
+        // Allow the submission to run for 10 seconds.
+        "RLIMIT_CPU" : 10,
+        // Allow up to 20 additional processes launched by the student code.
+        "RLIMIT_NPROC" : 20
+    },
+
+    // Allow the student code to use IPC and multiprocessing system calls.
+    "allow_system_calls" : [
+        // This allows us to use ipc, pipe, semop, shmat, shmtcl, ...
+        "ALLOW_SYSTEM_CALL_CATEGORY_COMMUNICATIONS_AND_NETWORKING_INTERPROCESS_COMMUNICATION",
+        // This allows us to use clone, execve, fork, set_tid_address, vfork
+        "ALLOW_SYSTEM_CALL_CATEGORY_PROCESS_CONTROL_NEW_PROCESS_THREAD"
+    ],
+  "testcases" : [
+    {
+      "title" : "Cpp - Static Analysis",
+
+      // Here, multiple commands are provided (to be executed in sequence).
+      // The first is to execute the student code, the second is to count the number of calls to the
+      // "print" function.
+      "command" : [ "commonast -cpp *.cpp -For Void"],
+      "points" : 4,
+      "validation" : [
+       {
+          // Grade by comparing the contents of a file to a given integer.
+	  "method" : "intComparison",
+          // Use the output of the second command.
+	  "actual_file" : "STDOUT.txt",
+	  "description" : "Number of for loops",
+
+          // The method by which to compare the output of "submitty_count"
+          // against the provided term (here, "greater-than-or-equal" is used).
+	  "comparison" : "e",
+          // The integer against which to compare.
+	  "term" : 1,
+
+          // Message to the student.
+	  "failure_message" : "you do not have one for loop",
+          // Only display a message if the test failed.
+	  "show_message" : "on_failure",
+          // Hide the student/instructor comparison.
+	  "show_actual" : "always"
+	}
+       ]
+    }
+  ]
+}
