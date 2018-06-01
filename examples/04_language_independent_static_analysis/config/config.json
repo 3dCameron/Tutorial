@@ -1,0 +1,134 @@
+{
+    //With the commonAST tool, you can run static analysis on both C++ and python files
+    "part_names": [ "Part 1 -Python", "Part 2 - C++"] ,
+
+    "testcases" : [
+        {
+            
+            "title" : "Part 1: Python Files",
+      	   // Here, multiple commands are provided (to be executed in sequence).
+            "command" : [ "python commonast.py -py -For -Void *.py",
+                          "python commonast.py -py -While -Void *.py",
+			  "python commonast.py -py -Call -Void *.py",
+			  "python commonast.py -py -Call split *.py"],
+            "points" : 1,
+            "validation" : [
+                {
+                    //number of for loops 
+          	    // Grade by comparing the contents of a file to a given integer.
+                    "method" : "intComparison",
+          	    // Use the output of the second command.
+                    "actual_file" : "STDOUT_0.txt",
+                    "description" : "Number of for loops",
+		    // The method by which to compare the output of "submitty_count"
+          	    // against the provided term (here, "greater-than-or-equal" is used).
+		    "comparison" : "ge",
+             	    // The integer against which to compare.
+                    "term" : 1,
+          	    // Message to the student.
+                    "failure_message" : "You must have at least one for loop.",
+          	    // Only display a message if the test failed.
+                    "show_message" : "on_failure",
+          	    // Hide the student/instructor comparison.
+                    "show_actual" : "never"
+                },
+		{
+		    //number of while loops 
+                    "method" : "intComparison",
+                    "actual_file" : "STDOUT_1.txt",
+                    "description" : "Number of while loops",
+		    "comparison" : "eq",
+                    "term" : 0,
+                    "failure_message" : "Please read the instructions. You may not use a while loop",
+                    "show_message" : "on_failure",
+                    "show_actual" : "never"
+
+
+		}, 
+		{
+		    //number of function calls 
+                    "method" : "intComparison",
+                    "actual_file" : "STDOUT_2.txt",
+                    "description" : "Number of function calls",
+		    "comparison" : "ge",
+                    "term" : 1,
+                    "failure_message" : "You must call at least one function",
+                    "show_message" : "on_failure",
+                    "show_actual" : "never"
+
+		},
+		{
+		   //number of calls to a "forbidden function"
+		    "method" : "intComparison",
+                    "actual_file" : "STDOUT_3.txt",
+                    "description" : "Number of function calls to split",
+		    "comparison" : "eq",
+                    "term" : 0,
+                    "failure_message" : "You may not call split",
+                    "show_message" : "on_failure",
+                    "show_actual" : "never"
+
+		}
+            ]
+        },
+	{
+	    //We can use the same commands for C++ files - just change the language option 
+	    "title" : "Part 2: C++ Files",
+            "command" : [ "python commonast.py -cpp -For -Void *.h *.cpp",
+                          "python commonast.py -cpp -While -Void *.h *.cpp",
+			  "python commonast.py -cpp -Call -Void *.h *.cpp",
+			  "python commonast.py -cpp -Call erase *.h *.cpp"],
+            "points" : 1,
+            "validation" : [
+                {
+                    //number of for loops 
+                    "method" : "intComparison",
+                    "actual_file" : "STDOUT_0.txt",
+                    "description" : "Number of for loops",
+		    "comparison" : "ge",
+                    "term" : 1,
+                    "failure_message" : "You must have at least one for loop.",
+                    "show_message" : "on_failure",
+                    "show_actual" : "never"
+                },
+		{
+		    //number of while loops 
+                    "method" : "intComparison",
+                    "actual_file" : "STDOUT_1.txt",
+                    "description" : "Number of while loops",
+		    "comparison" : "eq",
+                    "term" : 0,
+                    "failure_message" : "Please read the instructions. You may not use a while loop",
+                    "show_message" : "on_failure",
+                    "show_actual" : "never"
+
+
+		}, 
+		{
+		    //number of function calls 
+                    "method" : "intComparison",
+                    "actual_file" : "STDOUT_2.txt",
+                    "description" : "Number of function calls",
+		    "comparison" : "ge",
+                    "term" : 1,
+                    "failure_message" : "You must call at least one function",
+                    "show_message" : "on_failure",
+                    "show_actual" : "never"
+
+		},
+		{
+		   //number of calls to a "forbidden function"
+		    "method" : "intComparison",
+                    "actual_file" : "STDOUT_3.txt",
+                    "description" : "Number of function calls to erase",
+		    "comparison" : "eq",
+                    "term" : 0,
+                    "failure_message" : "You may not call erase",
+                    "show_message" : "on_failure",
+                    "show_actual" : "never"
+
+		}
+            ]
+	}
+    ]
+}
