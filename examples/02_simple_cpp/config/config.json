@@ -26,5 +26,7 @@
         }
       ]
     }
-  ]
+  ],
+
+  "tags" : [ "C++", "Print", "Hello", "World", "cout" ]
 }

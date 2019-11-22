@@ -26,5 +26,8 @@
           }
       ]
     }
-  ]
+  ],
+
+  // Tags for use with homework library search
+  "tags" : [ "Python", "Calculation" ]
 }

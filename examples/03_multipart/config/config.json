@@ -46,5 +46,7 @@
                 }
             ]
         }
-    ]
+    ],
+
+    "tags" : [ "Python", "Calculation" ]
 }
